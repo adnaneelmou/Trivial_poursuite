@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_benchmark
+    columns:
+      - name: observation_id
+        tests: [not_null, unique]
+      - name: question_id
+        tests: [not_null]
+      - name: model
+        tests: [not_null]
+      - name: prompt_id
+        tests: [not_null]
+      - name: difficulty
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['easy', 'medium', 'hard']
+      - name: question_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['multiple', 'boolean']
